@@ -9,12 +9,9 @@ from users.models import User
 
 
 class Stock(models.Model):
-    stock_id = models.IntegerField()
+    stock_id = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     module = models.CharField(max_length=255)
-
-    def __unicode__(self):
-        return '%d' % self.stock_id
 
 
 class AccessRecord(models.Model):

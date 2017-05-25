@@ -8,8 +8,5 @@ from django.db import models
 
 class User(models.Model):
 
-    user_id = models.IntegerField()
-    name = models.CharField(max_length=255)
-
-    def __unicode__(self):
-        return "%d" % self.user_id
+    user_id = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True)
