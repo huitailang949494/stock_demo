@@ -211,7 +211,9 @@
 							向您推荐以下几只股票
 						</h4>
 						<p class="intro-message">
-							SZ300292,SH600207,SH600599,SZ002430,SZ002331
+							{% for sentence in predict_sentence %}
+							{{sentence}}
+							{% endfor %}
 						</p>
 					</div>
 				</div>
@@ -232,8 +234,8 @@
 						<h3>预测股票</h3>
 					</div>
 					<form id="subscription-form">
-						<input type="email" name="EMAIL" required="required" placeholder="请输入行为序列，以空格隔开" class="input-email" />
-						<button type="submit" id="subscription-btn" class="fancy-button button-line button-white large zoom">
+						<input type="predict" required="required" placeholder="请输入行为序列，以空格隔开" class="input-stock" />
+						<button type="submit" id="subscription-btn" class="submit-stock fancy-button button-line button-white large zoom">
 							进行预测
 							<span class="icon">
 								<i class="fa fa-sign-in"></i>
@@ -248,4 +250,19 @@
 	
 
 </body>
+<script>
+$('.submit-stock').on('click', function(){
+	console.log($('.input-stock').val());
+	$ajax({
+		type:"GET",
+		url:'/user/predict/',
+		data:{
+			'sentence': $('.input-stock').val(),
+		},
+		success: function(data){
+			console(data);
+		}
+	});
+});
+</script>
 </html>
