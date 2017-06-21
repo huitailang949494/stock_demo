@@ -12,8 +12,8 @@ def index(request, user_id):
     target_sentence = []
     for a in accessrecords:
         target_sentence.append(a.stock.stock_id.lower())
-    # predict_sentence = predict_stock(target_sentence)
-    predict_sentence = [1,2,3,4,5]
+    predict_sentence = predict_stock(target_sentence)
+    # predict_sentence = [1,2,3,4,5]
     most_care_stock = ''
     most_care_module = ''
     stock_cnt = {}
